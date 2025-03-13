@@ -1,0 +1,3 @@
+<template>
+    top-list
+</template>

@@ -6,6 +6,9 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    fontFamily: {
+      'sans': ["PingFang SC", "STHeitiSC-Light", "Helvetica-Light", "arial", "sans-serif", "Droid Sans Fallback"],
+    },
     extend: {
       colors: {
         'color-background': '#222',
@@ -27,7 +30,7 @@ module.exports = {
         'mdx': '16px',
         'lg': '18px',
         'lgx': '22px'
-      }
+      },
     },
   },
   plugins: [],
