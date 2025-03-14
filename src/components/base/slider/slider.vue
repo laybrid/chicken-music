@@ -3,7 +3,7 @@
         <div class="relative overflow-hidden text-nowrap">
             <div class="slider-page" v-for="item in sliders" :key="item.id">
                 <a :href="item.link" class="block w-[100%]">
-                    <img :src="item.pic" alt="" class="block w-[100]">
+                    <img :src="item.pic" alt="" class="w-[100%]">
                 </a>
             </div>
         </div>
@@ -25,6 +25,7 @@ const { currentPageIndex } = useSlider(root)
 
 <style scoped>
 .slider-page {
+    width: 100%;
     display: inline-block;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
