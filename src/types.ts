@@ -13,3 +13,14 @@ export interface recommendData {
     sliders?: sliderData[],
     albums?: albumsData[]
 }
+
+export interface singer {
+    id: number,
+    mid: string,
+    name: string,
+    pic: string
+}
+export interface singerData {
+    title: string,
+    list: singer[]
+}

@@ -15,7 +15,7 @@
     "axios": "^1.8.3",
     "core-js": "^3.8.3",
     "js-base64": "^3.7.7",
-    "pinyin": "^4.0.0-alpha.2",
+    "pinyin": "^2.11.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vue3-lazy": "^1.0.0-alpha.1"

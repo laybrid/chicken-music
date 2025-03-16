@@ -3,11 +3,11 @@ import loading from "./loading.vue"
 // 获取loading组件实例的类型
 type loadingType = InstanceType<typeof loading>;
 const app = createApp(loading)
-const instance: loadingType = app.mount(document.createElement('div'))
+const instance = app.mount(document.createElement('div')) as loadingType
 const loadingDirective = {
     mounted(el: Element, binding: DirectiveBinding) {
         const arg = binding.arg
-        if (typeof arg != undefined) {
+        if ( arg != undefined) {
             instance.setTitle(arg)
         }
         if (binding.value) {
@@ -16,7 +16,7 @@ const loadingDirective = {
     },
     updated(el: Element, binding: DirectiveBinding) {
         const arg = binding.arg
-        if (typeof arg != undefined) {
+        if (arg != undefined) {
             instance.setTitle(arg)
         }
         if (binding.value != binding.oldValue) {
