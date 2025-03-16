@@ -15,12 +15,12 @@ export interface recommendData {
 }
 
 export interface singer {
-    id: number,
-    mid: string,
-    name: string,
-    pic: string
+    id?: number,
+    mid?: string,
+    name?: string,
+    pic?: string
 }
 export interface singerData {
-    title: string,
-    list: singer[]
+    title?: string,
+    list?: singer[]
 }

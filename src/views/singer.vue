@@ -1,5 +1,7 @@
 <template>
-    <IndexList v-if="data" :singers="data"></IndexList>
+    <div class="fixed top-[88px] bottom-0 w-[100%]" v-loading="!data?.length">
+        <IndexList v-if="data" :singers="data"></IndexList>
+    </div>
 </template>
 
 <script setup lang="ts">
