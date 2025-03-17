@@ -5,7 +5,8 @@
                 <li v-for="gruop in singers" :key="gruop.title">
                     <h2 class="h-[30px] pl-5 bg-color-highlight-background text-sm text-color-text-l leading-[30px]">{{ gruop.title }}</h2>
                     <ul>
-                        <li class="flex pt-5 pl-[30px] items-center" v-for="item in gruop.list" :key="item.id">
+                        <li @click="onclick(item)" 
+                        class="flex pt-5 pl-[30px] items-center" v-for="item in gruop.list" :key="item.id">
                             <img v-lazy="item.pic" alt="" style="flex: 0 0 50px; border-radius: 50%; height: 50px;">
                             <span class="ml-5 text-color-text-l text-md">{{ item.name }}</span>
                         </li>
@@ -29,12 +30,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps,defineEmits } from 'vue';
 import Scroll from '../scroll/scroll.vue';
 import useFixed from './use-fixed';
 import useShortList from './uses-shortlist';
-import { singerData } from '@/types';
+import { singerData,singer } from '@/types';
 const props = defineProps<{ singers: singerData[]}>()
+const emit = defineEmits(['select'])
 const {groupRef,onScroll,fixedTitle,fixedStyle,currentIndex} = useFixed(props)
 const {shortList,onStart,onMove,scrollRef} = useShortList(props,groupRef)
+
+function onclick(item:singer) {
+    emit('select',item)
+}
 </script>

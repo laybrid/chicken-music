@@ -1,3 +1,7 @@
+export interface serviceParams {
+    mid?:string | string[]
+}
+
 export interface sliderData {
     id: string,
     pic: string,
@@ -23,4 +27,15 @@ export interface singer {
 export interface singerData {
     title?: string,
     list?: singer[]
+}
+
+export interface song {
+    album:string,
+    duration:number,
+    id:number,
+    mid:string,
+    name:string,
+    pic:string,
+    singer:string,
+    url:string
 }
