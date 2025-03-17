@@ -8,20 +8,29 @@ interface pos {
     y: number
 }
 export default function useFixed(props: props) {
+    const TITLE_HEIGHT = 30
     const groupRef = ref()
     const listHeights = ref<number[]>([])
     const scrollY = ref(0)
     const currentIndex = ref(0)
+    const distance = ref(0)
     const fixedTitle = computed(() => {
         if (scrollY.value < 0) {
             return ''
         }
         return props.singers[currentIndex.value].title
     })
+    const fixedStyle = computed(() => {
+        const distanceVal = distance.value
+        const diff = (distanceVal > 0 && distanceVal < TITLE_HEIGHT) ? distanceVal - TITLE_HEIGHT : 0
+        return {
+            transform: `translate3d(0,${diff}px,0)`
+        }
+    })
     watch(() => props.singers, async () => {
         await nextTick()
         calculate()
-    },{immediate:true})
+    }, { immediate: true })
     watch(scrollY, (newY) => {
         const listHeightsVal = listHeights.value
         for (let i = 0; i < listHeightsVal.length - 1; i++) {
@@ -29,6 +38,7 @@ export default function useFixed(props: props) {
             const bottom = listHeightsVal[i + 1]
             if (newY >= top && newY <= bottom) {
                 currentIndex.value = i
+                distance.value = bottom - newY
             }
         }
     })
@@ -49,6 +59,8 @@ export default function useFixed(props: props) {
     return {
         groupRef,
         onScroll,
-        fixedTitle
+        fixedTitle,
+        fixedStyle,
+        currentIndex
     }
 }

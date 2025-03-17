@@ -1,5 +1,5 @@
 <template>
-    <Scroll class="relative h-[100%] overflow-hidden" :probe-type="3" @scroll="onScroll">
+    <Scroll class="relative h-[100%] overflow-hidden" :probe-type="3" @scroll="onScroll" ref="scrollRef">
         <div class="pb-[30px]">
             <ul ref="groupRef">
                 <li v-for="gruop in singers" :key="gruop.title">
@@ -13,18 +13,28 @@
                 </li>
             </ul>
         </div>
-        <div class="absolute top-0 left-0 w-[100%]" v-show="fixedTitle">
+        <div class="absolute top-0 left-0 w-[100%]" v-show="fixedTitle" :style="fixedStyle">
             <h2 class="h-[30px] pl-5 bg-color-highlight-background text-sm text-color-text-l leading-[30px]" >{{ fixedTitle }}</h2>
+        </div>
+        <div class="absolute top-1/2 right-1 -translate-y-1/2 w-5 py-5 rounded-[10px] text-center bg-color-background-d"
+        @touchstart.stop.prevent="onStart"
+        @touchmove.stop.prevent="onMove">
+            <ul>
+                <li  class="text-color-text-l text-sm" v-for="(item,index) in shortList" :key="item"
+                :class="{'text-color-theme': currentIndex === index}"
+                :data-index="index">{{ item }}</li>
+            </ul>
         </div>
     </Scroll>
 </template>
 
 <script setup lang="ts">
-import { defineProps, watch } from 'vue';
+import { defineProps } from 'vue';
 import Scroll from '../scroll/scroll.vue';
-import useFixed from './usefixed';
+import useFixed from './use-fixed';
+import useShortList from './uses-shortlist';
 import { singerData } from '@/types';
 const props = defineProps<{ singers: singerData[]}>()
-const {groupRef,onScroll,fixedTitle} = useFixed(props)
-
+const {groupRef,onScroll,fixedTitle,fixedStyle,currentIndex} = useFixed(props)
+const {shortList,onStart,onMove,scrollRef} = useShortList(props,groupRef)
 </script>
