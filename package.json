@@ -12,8 +12,10 @@
     "@better-scroll/observe-dom": "^2.5.1",
     "@better-scroll/slide": "^2.5.1",
     "@heroicons/vue": "^2.2.0",
+    "@vueuse/core": "^13.0.0",
     "axios": "^1.8.3",
     "core-js": "^3.8.3",
+    "good-storage": "^1.1.1",
     "js-base64": "^3.7.7",
     "pinyin": "^2.11.2",
     "vue": "^3.2.13",
@@ -21,6 +23,7 @@
     "vue3-lazy": "^1.0.0-alpha.1"
   },
   "devDependencies": {
+    "@types/good-storage": "^1.1.2",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
